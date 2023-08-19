@@ -1,26 +1,26 @@
 [
     {
-        "name": "Circle Network",
-        "url": "http://new.circleftp.net/"
+        "name": "Dhaka Flix",
+        "url": "http://172.21.22.2/"
     },
     {
-        "name": "Circle Network (old)",
-        "url": "http://circleftp.net/"
+        "name": "Dhaka Flix [2]",
+        "url": "http://10.1.1.3/"
     },
     {
-        "name": "Circle Network (ftp)",
-        "url": "http://ftp4.circleftp.net/"
+        "name": "Ebox Live",
+        "url": "http://tv.ebox.live/"
     },
     {
-        "name": "SAM Online",
-        "url": "http://172.16.50.4/"
+        "name": "BTV",
+        "url": "https://www.btvlive.gov.bd/"
     },
     {
-        "name": "SAM Online [2]",
-        "url": "http://172.16.50.5/"
+        "name": "Toffee Live",
+        "url": "https://toffeelive.com/home"
     },
     {
-        "name": "ICC FTP Server",
-        "url": "http://10.16.100.244/"
+        "name": "Binge",
+        "url": "https://binge.buzz/"
     }
 ]

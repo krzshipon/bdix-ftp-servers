@@ -1,4 +1,3 @@
-import 'package:bdix_ftps/app/modules/home/server_model.dart';
 import 'package:bdix_ftps/app/modules/home/views/server_view.dart';
 import 'package:flutter/material.dart';
 
@@ -33,11 +32,21 @@ class HomeView extends GetView<HomeController> {
             selectedIndex: controller.selectedIndex.value,
             barItems: <BarItem>[
               BarItem(
-                  filledIcon: Icons.web_sharp,
-                  outlinedIcon: Icons.web_outlined),
+                filledIcon: Icons.movie_sharp,
+                outlinedIcon: Icons.movie_outlined,
+              ),
               BarItem(
-                  filledIcon: Icons.movie_sharp,
-                  outlinedIcon: Icons.movie_outlined),
+                filledIcon: Icons.tv_sharp,
+                outlinedIcon: Icons.tv_outlined,
+              ),
+              BarItem(
+                filledIcon: Icons.leak_remove_sharp,
+                outlinedIcon: Icons.leak_remove_outlined,
+              ),
+              BarItem(
+                filledIcon: Icons.topic_sharp,
+                outlinedIcon: Icons.topic_outlined,
+              ),
             ],
           ),
         ),
@@ -48,25 +57,32 @@ class HomeView extends GetView<HomeController> {
         children: <Widget>[
           Container(
             alignment: Alignment.center,
-            child: _AllServers(),
+            child: _ServerView(),
           ),
           Container(
             alignment: Alignment.center,
-            child: _MovieServers(),
+            child: _ServerView(),
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: _ServerView(),
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: _ServerView(),
           ),
         ],
       ),
     );
   }
 
-  _AllServers() => Center(
+  Widget _ServerView() => Center(
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: kpHorizontalPadding),
           children: [
             verticalSpaceLarge,
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: kmCardMarginS + kmTextExtraMargin),
+            const Padding(
+              padding: EdgeInsets.only(left: kmCardMarginS + kmTextExtraMargin),
               child: CSText.title('BDIX FTP SERVERS'),
             ),
             Obx(
@@ -75,10 +91,10 @@ class HomeView extends GetView<HomeController> {
                 physics: const ClampingScrollPhysics(),
                 options: kAnimationOptions,
                 itemBuilder: animationItemBuilder((index) => ServerView(
-                    controller.serverLsit[index],
+                    controller.serverList[index],
                     onTap: (() =>
-                        controller.openServer(controller.serverLsit[index])))),
-                itemCount: controller.serverLsit.length,
+                        controller.openServer(controller.serverList[index])))),
+                itemCount: controller.serverList.length,
                 gridDelegate: kGridDelegate,
               ),
             )

@@ -1,23 +1,30 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 import '../server_model.dart';
 
+const baseFtpUrl = 'krzshipon.github.io';
+
 class ServerProvider extends GetConnect {
-  @override
-  void onInit() {
-    httpClient.defaultDecoder = (map) {
-      if (map is Map<String, dynamic>) return Server.fromJson(map);
-      if (map is List) return map.map((item) => Server.fromJson(item)).toList();
-    };
-    httpClient.baseUrl = 'YOUR-API-URL';
-  }
+  Future<List<Server>?> getFtpServers(String path) async {
+    var url = Uri.https(
+      baseFtpUrl,
+      '/bdix-ftp-servers/$path',
+    );
 
-  Future<Server?> getServer(int id) async {
-    final response = await get('server/$id');
-    return response.body;
-  }
+    var response = await http.get(url);
 
-  Future<Response<Server>> postServer(Server server) async =>
-      await post('server', server);
-  Future<Response> deleteServer(int id) async => await delete('server/$id');
+    if (response.statusCode == 200) {
+      response.body.printInfo();
+      final List<dynamic> jsonList = json.decode(response.body);
+      final List<Server> serverList =
+          jsonList.map((json) => Server.fromJson(json)).toList();
+      return serverList;
+    } else {
+      response.statusCode.printInfo();
+      return [];
+    }
+  }
 }
