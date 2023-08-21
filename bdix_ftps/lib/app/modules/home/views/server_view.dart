@@ -9,14 +9,31 @@ class ServerView extends GetView {
   const ServerView(this.server, {Key? key, this.onTap}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return CSCard(children: [
-      verticalSpaceMedium,
-      CSText(server.name ?? ''),
-      CSText('URL: ${server.url}'),
-      CSButton.outline(
-        title: "Open",
-        onTap: onTap,
-      )
-    ]);
+    return CSCard(
+      children: [
+        Expanded(
+          flex: 5,
+          child: Align(
+            alignment: Alignment.center,
+            child: CSText.title(server.name ?? ''),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: CSText.label(
+            server.url ?? '',
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Container(
+            child: CSButton.outline(
+              title: "Open",
+              onTap: onTap,
+            ),
+          ),
+        )
+      ],
+    );
   }
 }

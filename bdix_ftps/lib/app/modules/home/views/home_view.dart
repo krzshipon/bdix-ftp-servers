@@ -16,8 +16,8 @@ class HomeView extends GetView<HomeController> {
           borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
           child: WaterDropNavBar(
             bottomPadding: 20,
-            backgroundColor: Get.theme.colorScheme.onBackground,
-            waterDropColor: Colors.red,
+            backgroundColor: Get.theme.colorScheme.secondary,
+            waterDropColor: Colors.white,
             onItemSelected: (int index) {
               try {
                 controller.selectedIndex.value = index;
@@ -78,7 +78,14 @@ class HomeView extends GetView<HomeController> {
 
   Widget _ServerView() => Center(
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: kpHorizontalPadding),
+          padding: EdgeInsets.symmetric(
+              horizontal: Get.width > 1024
+                  ? 120
+                  : Get.width > 768
+                      ? 60
+                      : Get.width > 425
+                          ? 30
+                          : kpHorizontalPadding),
           children: [
             verticalSpaceLarge,
             const Padding(
@@ -95,7 +102,12 @@ class HomeView extends GetView<HomeController> {
                     onTap: (() =>
                         controller.openServer(controller.serverList[index])))),
                 itemCount: controller.serverList.length,
-                gridDelegate: kGridDelegate,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: Get.width ~/ 250,
+                  crossAxisSpacing: 0,
+                  mainAxisSpacing: 0,
+                  childAspectRatio: 1,
+                ),
               ),
             )
           ],
