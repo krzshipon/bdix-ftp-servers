@@ -1,22 +1,22 @@
 [
     {
         "name": "Circle Network",
-        "url": "http://new.circleftp.net/"
+        "url": "http://new.circleftp.net"
     },
     {
         "name": "CLOUDONE Ftp",
-        "url": "http://www.c1movies.com"
+        "url": "http://c1movies.com"
     },
     {
         "name": "SAM Online",
-        "url": "http://172.16.50.4/"
+        "url": "http://172.16.50.4"
     },
     {
         "name": "SAM Online [2]",
-        "url": "http://172.16.50.5/"
+        "url": "http://172.16.50.5"
     },
     {
         "name": "ICC FTP Server",
-        "url": "http://10.16.100.244/"
+        "url": "http://10.16.100.244"
     }
 ]
