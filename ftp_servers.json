@@ -1,26 +1,26 @@
 [
     {
         "name": "Circle Network",
-        "url": "http://new.circleftp.net/"
+        "url": "new.circleftp.net"
     },
     {
         "name": "Circle Network (old)",
-        "url": "http://circleftp.net/"
+        "url": "circleftp.net"
     },
     {
         "name": "Circle Network (ftp)",
-        "url": "http://ftp4.circleftp.net/"
+        "url": "ftp4.circleftp.net"
     },
     {
         "name": "SAM Online",
-        "url": "http://172.16.50.4/"
+        "url": "172.16.50.4"
     },
     {
         "name": "SAM Online [2]",
-        "url": "http://172.16.50.5/"
+        "url": "172.16.50.5"
     },
     {
         "name": "ICC FTP Server",
-        "url": "http://10.16.100.244/"
+        "url": "10.16.100.244"
     }
 ]
