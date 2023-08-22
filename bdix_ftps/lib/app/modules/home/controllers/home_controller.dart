@@ -10,6 +10,7 @@ class HomeController extends GetxController {
   late PageController pageController;
 
   final selectedIndex = 0.obs;
+  final title = kTitleMovieServer.obs;
 
   final serverList = <Server>[].obs;
 
@@ -28,18 +29,23 @@ class HomeController extends GetxController {
       switch (value) {
         case 0:
           serverList.value = movieServerList;
+          title.value = kTitleMovieServer;
           break;
         case 1:
           serverList.value = tvServerList;
+          title.value = kTitleTvServer;
           break;
         case 2:
-          serverList.value = torrentServerList;
+          serverList.value = ftpServerList;
+          title.value = kTitleFtpServer;
           break;
         case 3:
-          serverList.value = ftpServerList;
+          serverList.value = torrentServerList;
+          title.value = kTitleTorrentServer;
           break;
         default:
           serverList.value = movieServerList;
+          title.value = kTitleMovieServer;
       }
     });
   }

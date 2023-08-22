@@ -40,12 +40,12 @@ class HomeView extends GetView<HomeController> {
                 outlinedIcon: Icons.tv_outlined,
               ),
               BarItem(
-                filledIcon: Icons.leak_remove_sharp,
-                outlinedIcon: Icons.leak_remove_outlined,
-              ),
-              BarItem(
                 filledIcon: Icons.topic_sharp,
                 outlinedIcon: Icons.topic_outlined,
+              ),
+              BarItem(
+                filledIcon: Icons.swap_horizontal_circle_sharp,
+                outlinedIcon: Icons.swap_horizontal_circle_outlined,
               ),
             ],
           ),
@@ -88,9 +88,12 @@ class HomeView extends GetView<HomeController> {
                           : kpHorizontalPadding),
           children: [
             verticalSpaceLarge,
-            const Padding(
-              padding: EdgeInsets.only(left: kmCardMarginS + kmTextExtraMargin),
-              child: CSText.title('BDIX FTP SERVERS'),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: kmCardMarginS + kmTextExtraMargin),
+              child: Obx(
+                () => CSText.title(controller.title.value),
+              ),
             ),
             Obx(
               () => LiveGrid.options(
