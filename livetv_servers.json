@@ -1,26 +1,26 @@
 [
     {
         "name": "Dhaka Flix",
-        "url": "http://172.21.22.2/"
+        "url": "http://172.21.22.2"
     },
     {
         "name": "Dhaka Flix [2]",
-        "url": "http://10.1.1.3/"
+        "url": "http://10.1.1.3"
     },
     {
         "name": "Ebox Live",
-        "url": "http://tv.ebox.live/"
+        "url": "http://tv.ebox.live"
     },
     {
         "name": "BTV",
-        "url": "https://www.btvlive.gov.bd/"
+        "url": "https://btvlive.gov.bd"
     },
     {
         "name": "Toffee Live",
-        "url": "https://toffeelive.com/home"
+        "url": "https://toffeelive.com"
     },
     {
         "name": "Binge",
-        "url": "https://binge.buzz/"
+        "url": "https://binge.buzz"
     }
 ]
