@@ -11,7 +11,7 @@ Future<void> main() async {
 
   runApp(
     GetMaterialApp(
-      title: 'app_name'.tr,
+      title: "BDIX FTPS",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: appThemeL,
