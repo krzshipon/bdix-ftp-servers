@@ -20,6 +20,8 @@ class HomeView extends GetView<HomeController> {
             waterDropColor: Colors.white,
             onItemSelected: (int index) {
               try {
+                controller.serverList.value = [];
+                // Get.showLoader();
                 controller.selectedIndex.value = index;
                 controller.pageController.animateToPage(
                     controller.selectedIndex.value,
@@ -54,6 +56,7 @@ class HomeView extends GetView<HomeController> {
       child: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: controller.pageController,
+        onPageChanged: (value) => controller.pageChanged(value),
         children: <Widget>[
           Container(
             alignment: Alignment.center,
@@ -96,22 +99,29 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             Obx(
-              () => LiveGrid.options(
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                options: kAnimationOptions,
-                itemBuilder: animationItemBuilder((index) => ServerView(
-                    controller.serverList[index],
-                    onTap: (() =>
-                        controller.openServer(controller.serverList[index])))),
-                itemCount: controller.serverList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: Get.width ~/ 250,
-                  crossAxisSpacing: 0,
-                  mainAxisSpacing: 0,
-                  childAspectRatio: 1,
-                ),
-              ),
+              () => controller.serverList.isNotEmpty
+                  ? LiveGrid.options(
+                      shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
+                      options: const LiveOptions(
+                        showItemInterval: Duration.zero,
+                        showItemDuration: Duration(milliseconds: 100),
+                        visibleFraction: 0.05,
+                        reAnimateOnVisibility: false,
+                      ),
+                      itemBuilder: animationItemBuilder((index) => ServerView(
+                          controller.serverList[index],
+                          onTap: (() => controller
+                              .openServer(controller.serverList[index])))),
+                      itemCount: controller.serverList.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: Get.width ~/ 250,
+                        crossAxisSpacing: 0,
+                        mainAxisSpacing: 0,
+                        childAspectRatio: 1,
+                      ),
+                    )
+                  : const Center(child: CircularProgressIndicator()),
             )
           ],
         ),

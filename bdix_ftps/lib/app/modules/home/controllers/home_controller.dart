@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:bdix_ftps/app/modules/home/providers/server_provider.dart';
 import 'package:bdix_ftps/app/modules/home/server_model.dart';
 import 'package:bdix_ftps/app/util/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:super_ui_kit/super_ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
@@ -24,30 +27,6 @@ class HomeController extends GetxController {
     super.onInit();
     pageController = PageController(initialPage: selectedIndex.value);
     fetchServerData();
-    selectedIndex.listen((value) {
-      value.printInfo();
-      switch (value) {
-        case 0:
-          serverList.value = movieServerList;
-          title.value = kTitleMovieServer;
-          break;
-        case 1:
-          serverList.value = tvServerList;
-          title.value = kTitleTvServer;
-          break;
-        case 2:
-          serverList.value = ftpServerList;
-          title.value = kTitleFtpServer;
-          break;
-        case 3:
-          serverList.value = torrentServerList;
-          title.value = kTitleTorrentServer;
-          break;
-        default:
-          serverList.value = movieServerList;
-          title.value = kTitleMovieServer;
-      }
-    });
   }
 
   Future<void> fetchServerData() async {
@@ -88,5 +67,33 @@ class HomeController extends GetxController {
       // Show an error message
       throw 'Could not launch $url';
     }
+  }
+
+  pageChanged(int value) {
+    print("pageChanged");
+    Timer(Duration(milliseconds: 500), () async {
+    switch (value) {
+      case 0:
+        serverList.value = movieServerList;
+        title.value = kTitleMovieServer;
+        break;
+      case 1:
+        serverList.value = tvServerList;
+        title.value = kTitleTvServer;
+        break;
+      case 2:
+        serverList.value = ftpServerList;
+        title.value = kTitleFtpServer;
+        break;
+      case 3:
+        serverList.value = torrentServerList;
+        title.value = kTitleTorrentServer;
+        break;
+      default:
+        serverList.value = movieServerList;
+        title.value = kTitleMovieServer;
+    }
+    });
+    // Get.hideLoader();
   }
 }
