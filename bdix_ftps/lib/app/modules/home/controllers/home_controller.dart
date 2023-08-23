@@ -71,7 +71,23 @@ class HomeController extends GetxController {
 
   pageChanged(int value) {
     print("pageChanged");
-    Timer(Duration(milliseconds: 500), () async {
+    switch (value) {
+      case 0:
+        title.value = kTitleMovieServer;
+        break;
+      case 1:
+        title.value = kTitleTvServer;
+        break;
+      case 2:
+        title.value = kTitleFtpServer;
+        break;
+      case 3:
+        title.value = kTitleTorrentServer;
+        break;
+      default:
+        title.value = kTitleMovieServer;
+    }
+    Timer(const Duration(milliseconds: 500), () async {
     switch (value) {
       case 0:
         serverList.value = movieServerList;
